@@ -1,0 +1,30 @@
+.secret
+
+node_modules
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# local env files
+.env
+.env.local
+# dev environment
+.env.development.local
+# staging
+.env.test.local
+# production
+.env.production.local
+
+# vercel
+.vercel
+
+#Hardhat files
+cache
+artifacts
+
+#vscode
+.vscode
