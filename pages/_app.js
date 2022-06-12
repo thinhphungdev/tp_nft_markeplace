@@ -7,12 +7,17 @@ const MyApp = ({ Component, pageProps }) => (
   <ThemeProvider attribute="class">
     <div className="dark:bg-nft-dark bg-white min-h-screen">
       <Navbar />
-      <Component {...pageProps} />
+      <div className="pt-65">
+        <Component {...pageProps} />
+      </div>
       <Footer />
     </div>
 
     {/* Font awesomes for icons inside project */}
-    <Script src="https://kit.fontawesome.com/31b1a5de47.js" crossorigin="anonymous" />
+    <Script
+      src="https://kit.fontawesome.com/31b1a5de47.js"
+      crossorigin="anonymous"
+    />
   </ThemeProvider>
 );
 
