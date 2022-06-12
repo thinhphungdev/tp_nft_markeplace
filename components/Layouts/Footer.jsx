@@ -4,6 +4,13 @@ import Image from 'next/image';
 import images from '../../assets';
 import { Button } from '../UI';
 
+const FooterLinks = ({ heading, items }) => (
+  <div className="flex-1 justify-start items-start">
+    <h3 className="font-poppins font-semibold dark:text-white text-nft-black-1 text-xl mb-10">{heading}</h3>
+    {items.map((item, idx) => <p className="dark:text-white text-nft-black-1 font-poppins cursor-pointer text-base font-normal dark:hover:text-nft-gray-1 hover:text-nft-black-1 my-3" key={idx}>{item}</p>)}
+  </div>
+);
+
 const Footer = () => {
   const { theme } = useTheme();
 
@@ -37,12 +44,17 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
+        <div className="flex-1 flexBetweenStart ml-10 flex-wrap md:ml-0 md:mt-8">
+          <FooterLinks heading="CryptoKet" items={['Explore', 'How it Works', 'Contact Us']} />
+          <FooterLinks heading="Support" items={['Help Center', 'Term of Service', 'Legal', 'Privacy Policy']} />
+        </div>
       </div>
 
       <div className="flexCenter w-full mt-5 border-t dark:border-nft-black-1 border-nft-gray-1 sm:px-4 px-16">
         <div className="flexBetween flex-row w-full minmd:w-4/5 sm:flex-col mt-7">
           <p className="font-poppins dark:text-white text-nft-black-1 font-semibold text-base">
-            CryptoKet, Inc. All Rights Reserved.{' '}
+            CryptoKet, Inc. All Rights Reserved.
           </p>
 
           <div className="flex flex-row sm:mt-4">
@@ -54,7 +66,7 @@ const Footer = () => {
             ].map((img, idx) => (
               <div className="mx-2 cursor-pointer" key={idx}>
                 <Image
-                  className={theme === 'light' && 'filter invert'}
+                  className={theme === 'light' ? 'filter invert' : undefined}
                   src={img}
                   objectFit="contain"
                   width={24}
