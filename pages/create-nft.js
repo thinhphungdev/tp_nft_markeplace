@@ -2,12 +2,13 @@ import { useState, useCallback, useMemo, useContext } from 'react';
 import { useDropzone } from 'react-dropzone';
 import Image from 'next/image';
 import { useTheme } from 'next-themes';
-import { Button } from '../components/UI/index';
+import { Button, Input } from '../components/UI/index';
 import images from '../assets';
 
 const CreateNFT = () => {
   const { theme } = useTheme();
   const [fileUrl, setFileUrl] = useState(null);
+  const [formInput, setFormInput] = useState({ price: '', description: '', name: '' });
 
   const onDrop = useCallback(() => {
     // upload img to the blockchain (IPFS)
@@ -62,6 +63,14 @@ const CreateNFT = () => {
               </aside>
             )}
           </div>
+        </div>
+
+        <Input inputType="input" title="Name" placeholder="Item Name" onChange={(e) => setFormInput({ ...formInput, name: e.target.value })} />
+        <Input inputType="textarea" title="Description" placeholder="Description of your item" onChange={(e) => setFormInput({ ...formInput, description: e.target.value })} />
+        <Input inputType="number" title="Price" placeholder="Enter price" onChange={(e) => setFormInput({ ...formInput, price: e.target.value })} />
+
+        <div className="flex justify-end w-full mt-7">
+          <Button btnName="Create item" classStyles="rounded-md" />
         </div>
       </div>
     </div>
