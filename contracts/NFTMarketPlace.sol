@@ -44,9 +44,19 @@ contract NFTMarketPlace is ERC721URIStorage {
         bool sold
     );
 
- // set the owner as the msg.sender
+    // set the owner as the msg.sender
     // the owner of the contract is the one deploying it
     constructor() {
         owner = payable(msg.sender)
+    }
+
+    // payable give access to this function to receive ETH
+    function updateListingPrice(uint _listingPrice) public payable {
+        condition(owner == msg.sender, "Only marketplace owner can update the listing price");
+        listingPrice = _listingPrice;
+    }
+
+    function getListingPrice() public view returns (uint256) {
+        return listingPrice;
     }
 }
